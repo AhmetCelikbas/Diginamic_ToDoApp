@@ -2,6 +2,7 @@
   "name": "to-do-app",
   "version": "0.0.0",
   "license": "MIT",
+  "author": "celikbas.ahmet@gmail.com"
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
