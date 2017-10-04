@@ -22,6 +22,7 @@ export class TodoFormComponent implements OnInit {
 
     if (this.newTaskTitle && this.newTaskTitle.trim().length) {
       this.newTaskAdded.emit(new Task(this.newTaskTitle, false));
+      this.newTaskTitle = '';
     } else {
       console.log('Title input should not be empty.');
     }
