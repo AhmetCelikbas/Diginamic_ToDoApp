@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   todoList: Array<Task> = [];
 
   newTaskAdded(newTask): void {
-    this.todoList.push(newTask);
+    this.todoList.unshift(newTask);
   }
 
   taskUpdated(task: Task): void {
