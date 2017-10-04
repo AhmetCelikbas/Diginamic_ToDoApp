@@ -1,1 +1,22 @@
-<app-todo-list></app-todo-list>
+<div class="container">
+
+
+  <div class="todoHeader" >
+
+    <span *ngIf="todoList.length === 0">NO TASKS LEFT</span>
+    <span *ngIf="todoList.length === 1">{{todoList.length}} TASK(S) LEFT</span>
+    <span *ngIf="todoList.length > 1">{{todoList.length}} TASKS LEFT</span>
+
+
+    <!-- Afficher le bouton trash seulement si des tasks sont finies -->
+    <a *ngIf="todoList.length" href="#" (click)="removeDoneTasks()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+  </div>
+  <div class="todoBody">
+    <app-todo-list
+      [todoList]="todoList"
+      (taskUpdated)="taskUpdated($event)"></app-todo-list>
+  </div>
+  <div class="todoForm">
+    <app-todo-form (newTaskAdded)="newTaskAdded($event)"></app-todo-form>
+  </div>
+</div>

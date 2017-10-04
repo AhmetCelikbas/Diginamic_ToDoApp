@@ -1,0 +1,38 @@
+
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.todoHeader {
+  display: flex;
+  background-color: #d64742;
+  border-radius: 3px 3px 0 0;
+  padding: 10px;
+  border-bottom: 1px solid #B9403E;
+
+  span {
+    display: flex;
+    flex: auto;
+  }
+
+  a {
+    text-decoration: none;
+    display: flex;
+    color: white;
+  }
+}
+
+.todoBody {
+  background-color: #d9534f;
+  padding: 10px;
+  height: 400px;
+}
+
+.todoForm {
+  background-color: #d64742;
+  border-radius: 0 0 3px 3px;
+  padding: 10px;
+  border-top: 1px solid #B9403E;
+}

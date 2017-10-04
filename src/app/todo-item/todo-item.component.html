@@ -1,0 +1,2 @@
+<input (change)="updateTask($event)" type="checkbox">
+<span [class.isDone]="task?.isDone">{{task?.title | uppercase}}</span>
