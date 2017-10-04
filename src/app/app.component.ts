@@ -20,11 +20,8 @@ export class AppComponent implements OnInit {
   }
 
   removeDoneTasks(): void {
-    console.log('REMOVE TASKS : ');
-    this.todoList.forEach((task) => {
-      if (task.isDone === true) {
-        console.log(task);
-      }
+    this.todoList = this.todoList.filter((task) => {
+      return !task.isDone;
     });
 
 
@@ -32,24 +29,15 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-
+    /*
     this.todoList = [
       new Task('Faire les courses', false),
       new Task('Envoyer l\'attestation', false),
       new Task('Acheter des stylos', false),
       new Task('Changer l\'ampoule de la cuisine', false),
       new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
-      new Task('Tabernakle', false),
     ];
+    */
   }
 
 }

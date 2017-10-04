@@ -17,12 +17,7 @@ export class TodoItemComponent implements OnInit {
   @Output()
   taskUpdated: EventEmitter<Task> = new EventEmitter<Task>();
 
-  updateTask(event): void {
-    if (event.target.checked) {
-      this.task.isDone = true;
-    } else {
-      this.task.isDone = false;
-    }
+  updateTask(): void {
     this.task.index = this.index;
     this.taskUpdated.emit(this.task);
   }

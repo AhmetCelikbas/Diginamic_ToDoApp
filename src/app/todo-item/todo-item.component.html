@@ -1,2 +1,2 @@
-<input (change)="updateTask($event)" type="checkbox">
+<input title="checkbox" (change)="updateTask()" type="checkbox" [(ngModel)]="task.isDone">
 <span [class.isDone]="task?.isDone">{{task?.title | uppercase}}</span>

@@ -1,14 +1,8 @@
 <div class="container">
-
-
   <div class="todoHeader" >
-
-    <span *ngIf="todoList.length === 0">NO TASKS LEFT</span>
-    <span *ngIf="todoList.length === 1">{{todoList.length}} TASK(S) LEFT</span>
-    <span *ngIf="todoList.length > 1">{{todoList.length}} TASKS LEFT</span>
-
-
-    <!-- Afficher le bouton trash seulement si des tasks sont finies -->
+    <span *ngIf="todoList.length === 0">NO TASKS</span>
+    <span *ngIf="todoList.length === 1">{{todoList.length}} TASK(S)</span>
+    <span *ngIf="todoList.length > 1">{{todoList.length}} TASKS</span>
     <a *ngIf="todoList.length" href="#" (click)="removeDoneTasks()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
   </div>
   <div class="todoBody">
