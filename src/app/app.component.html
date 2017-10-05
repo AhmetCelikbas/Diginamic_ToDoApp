@@ -4,13 +4,12 @@
     <span *ngIf="todoList.length === 1">{{todoList.length}} TASK(S)</span>
     <span *ngIf="todoList.length > 1">{{todoList.length}} TASKS</span>
     <a *ngIf="todoList.length" href="#" (click)="removeDoneTasks()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    <i *ngIf="!todoList.length" class="fa fa-spinner" aria-hidden="true"></i>
   </div>
   <div class="todoBody">
-    <app-todo-list
-      [todoList]="todoList"
-      (taskUpdated)="taskUpdated($event)"></app-todo-list>
+    <app-todo-list [todoList]="todoList"></app-todo-list>
   </div>
   <div class="todoForm">
-    <app-todo-form (newTaskAdded)="newTaskAdded($event)"></app-todo-form>
+    <app-todo-form></app-todo-form>
   </div>
 </div>

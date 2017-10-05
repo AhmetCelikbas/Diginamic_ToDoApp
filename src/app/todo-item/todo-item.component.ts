@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Task from '../models/Task';
+import {default as TodoService} from '../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -11,18 +12,11 @@ export class TodoItemComponent implements OnInit {
   @Input()
   task: Task;
 
-  @Input()
-  index: number;
-
-  @Output()
-  taskUpdated: EventEmitter<Task> = new EventEmitter<Task>();
-
   updateTask(): void {
-    this.task.index = this.index;
-    this.taskUpdated.emit(this.task);
+    this.todoService.updateTodo(this.task);
   }
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
   }

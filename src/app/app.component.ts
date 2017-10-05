@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import Task from './models/Task';
+import {default as TodoService} from './services/todo.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,36 +10,22 @@ import Task from './models/Task';
 })
 export class AppComponent implements OnInit {
 
+  constructor(private todoService: TodoService) {}
+
   todoList: Array<Task> = [];
 
-  newTaskAdded(newTask): void {
-    this.todoList.unshift(newTask);
-  }
-
-  taskUpdated(task: Task): void {
-    console.log(task);
-    this.todoList[task.index].isDone = task.isDone;
-  }
-
   removeDoneTasks(): void {
-    this.todoList = this.todoList.filter((task) => {
-      return !task.isDone;
+    const array = this.todoList;
+    array.filter(task => task.isDone).forEach((taskToBeDeleted) => {
+      this.todoService.deleteTodo(taskToBeDeleted);
     });
-
-
   }
-
 
   ngOnInit() {
-    /*
-    this.todoList = [
-      new Task('Faire les courses', false),
-      new Task('Envoyer l\'attestation', false),
-      new Task('Acheter des stylos', false),
-      new Task('Changer l\'ampoule de la cuisine', false),
-      new Task('Tabernakle', false),
-    ];
-    */
+    this.todoService.fetchTodos();
+    this.todoService.todoList.subscribe((fetchedTodoList) => {
+      this.todoList = fetchedTodoList;
+    });
   }
 
 }

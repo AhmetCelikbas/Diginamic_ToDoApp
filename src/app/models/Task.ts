@@ -2,6 +2,6 @@ export default class Task {
   constructor(
     public title: string,
     public isDone: boolean,
-    public index?: number,
+    public id?: number,
   ) {}
 }

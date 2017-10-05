@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { default as ConfigService } from './services/config.service';
+import { default as TodoService } from './services/todo.service';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -17,8 +21,12 @@ import { TodoFormComponent } from './todo-form/todo-form.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+    TodoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

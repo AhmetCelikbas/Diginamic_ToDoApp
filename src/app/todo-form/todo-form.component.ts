@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import Task from '../models/Task';
+import {default as TodoService} from '../services/todo.service';
 
 @Component({
   selector: 'app-todo-form',
@@ -13,15 +14,19 @@ export class TodoFormComponent implements OnInit {
   @Output()
   newTaskAdded: EventEmitter<Task> = new EventEmitter<Task>();
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
   }
 
   addTask() {
 
+
     if (this.newTaskTitle && this.newTaskTitle.trim().length) {
-      this.newTaskAdded.emit(new Task(this.newTaskTitle, false));
+
+      this.todoService.addTodo(new Task(this.newTaskTitle, false));
+
+
       this.newTaskTitle = '';
     } else {
       console.log('Title input should not be empty.');

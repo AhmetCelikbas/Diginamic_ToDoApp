@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Task from '../models/Task';
 
 @Component({
@@ -11,12 +11,6 @@ export class TodoListComponent implements OnInit {
   @Input()
   todoList: Array<Task>;
 
-  @Output()
-  taskUpdated: EventEmitter<Task> = new EventEmitter<Task>();
-
-  transmitUpdatedTask(task: Task): void {
-    this.taskUpdated.emit(task);
-  }
   constructor() { }
 
   ngOnInit() {
