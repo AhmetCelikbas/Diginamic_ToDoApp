@@ -1,14 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import Task from './models/Task';
 import {default as TodoService} from './services/todo.service';
 
+let subscription: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private todoService: TodoService) {}
 
@@ -21,11 +22,15 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.todoService.fetchTodos();
-    this.todoService.todoList.subscribe((fetchedTodoList) => {
+    subscription = this.todoService.todoList.subscribe((fetchedTodoList) => {
       this.todoList = fetchedTodoList;
     });
+  }
+
+  ngOnDestroy(): void {
+    subscription.unsubscribe();
   }
 
 }
